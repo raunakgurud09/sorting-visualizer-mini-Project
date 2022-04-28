@@ -8,6 +8,9 @@ function swap(el1, el2) {
     
 }
 
+//importing userArray from userArray.js file
+// const userArray = require('./inputArray')
+
 // Disables sorting buttons used in conjunction with enable, so that we can disable during sorting and enable buttons after it
 function disableSortingBtn(){
     document.querySelector(".bubbleSort").disabled = true;
@@ -62,6 +65,13 @@ arraySize.addEventListener('input', function(){
     createNewArray(parseInt(arraySize.value));
 });
 
+// //Event listener to update the bars by user input
+// arraySize.addEventListener('userInput', function(){
+//     console.log(arraySize.value, typeof(arraySize.value));
+//     createNewArray(parseInt(arraySize.value));
+// });
+
+
 // Default input for waitforme function (260ms)
 let delay = 260;
 
@@ -77,18 +87,21 @@ delayElement.addEventListener('input', function(){
 // Creating array to store randomly generated numbers
 let array = [];
 
+const userarr = [20,15,60,200,150,100,50,90,180,160,120,140]
+console.log(userarr);
+
 // Call to display bars right when you visit the site
 createNewArray();
 
 // To create new array input size of array
 function createNewArray(noOfBars = 60) {
-    // calling helper function to delete old bars from dom
     deleteChild();
 
     // creating an array of random numbers 
     array = [];
     for (let i = 0; i < noOfBars; i++) {
-        array.push(Math.floor(Math.random() * 250) + 1);
+        array.push(Math.floor(Math.random() * 200) + 1);
+        // array.push(userArr[i]);
     }
     console.log(array);
 
@@ -116,7 +129,16 @@ function deleteChild() {
 const newArray = document.querySelector(".newArray");
 newArray.addEventListener("click", function(){
     console.log("From newArray " + arraySize.value);
-    console.log("From newArray " + delay);
+    console.log("From newArray with speed" + delay);
+    enableSortingBtn();
+    enableSizeSlider();
+    createNewArray(arraySize.value);
+});
+
+const userArray = document.querySelector(".InputArray");
+userArray.addEventListener("click", function () {
+    console.log("From newArray " + userarr.value);
+    console.log("From newArray with speed" + delay);
     enableSortingBtn();
     enableSizeSlider();
     createNewArray(arraySize.value);
