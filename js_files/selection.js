@@ -39,7 +39,9 @@ selectionSortbtn.addEventListener('click', async function(){
     disableSortingBtn();
     disableSizeSlider();
     disableNewArrayBtn();
+    disableInputArrayBtn();
     await selection();
+    enableInputArrayBtn();
     enableSortingBtn();
     enableSizeSlider();
     enableNewArrayBtn();

@@ -25,7 +25,9 @@ bubSortbtn.addEventListener('click', async function(){
     disableSortingBtn();
     disableSizeSlider();
     disableNewArrayBtn();
+    disableInputArrayBtn();
     await bubble();
+    enableInputArrayBtn();
     enableSortingBtn();
     enableSizeSlider();
     enableNewArrayBtn();

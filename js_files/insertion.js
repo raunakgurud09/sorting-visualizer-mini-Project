@@ -37,7 +37,9 @@ inSortbtn.addEventListener('click', async function(){
     disableSortingBtn();
     disableSizeSlider();
     disableNewArrayBtn();
+    disableInputArrayBtn();
     await insertion();
+    enableInputArrayBtn();
     enableSortingBtn();
     enableSizeSlider();
     enableNewArrayBtn();

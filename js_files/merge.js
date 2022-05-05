@@ -112,7 +112,9 @@ mergeSortbtn.addEventListener('click', async function(){
     disableSortingBtn();
     disableSizeSlider();
     disableNewArrayBtn();
+    disableInputArrayBtn();
     await mergeSort(ele, l, r);
+    enableInputArrayBtn();
     enableSortingBtn();
     enableSizeSlider();
     enableNewArrayBtn();

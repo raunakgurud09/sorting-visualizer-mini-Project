@@ -71,7 +71,9 @@ quickSortbtn.addEventListener('click', async function(){
     disableSortingBtn();
     disableSizeSlider();
     disableNewArrayBtn();
+    disableInputArrayBtn();
     await quickSort(ele, l, r);
+    enableInputArrayBtn();
     enableSortingBtn();
     enableSizeSlider();
     enableNewArrayBtn();

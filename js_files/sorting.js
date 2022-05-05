@@ -39,6 +39,16 @@ function enableSizeSlider(){
     document.querySelector("#arr_sz").disabled = false;
 }
 
+//Disable InputArray button 
+function disableInputArrayBtn(){
+    document.querySelector(".InputArray").disabled = true;
+}
+
+//Enable InputArray buttons used in conjucion with disable
+function enableInputArrayBtn(){
+    document.querySelector(".InputArray").disabled = false;
+}
+
 // Disables newArray buttons used in conjunction with enable, so that we can disable during sorting and enable buttons after it
 function disableNewArrayBtn(){
     document.querySelector(".newArray").disabled = true;
@@ -85,10 +95,53 @@ delayElement.addEventListener('input', function(){
 });
 
 // Creating array to store randomly generated numbers
+
 let array = [];
 
-const userarr = [20,15,60,200,150,100,50,90,180,160,120,140]
-console.log(userarr);
+const userarr = [20, 15, 60, 200, 150, 100, 50, 90, 180, 160, 120, 140,88,56,23,10,46,90];
+createInputArray();
+
+function createInputArray(noOfBars = userarr.value){
+
+    deleteChild();
+
+    array=[];
+    console.log(userarr);
+
+    for (let i = 0; i < 20; i++) {
+    //   array.push(Math.floor(Math.random() * 200) + 1);
+        array.push(userarr[i]);
+    }
+    console.log(array);
+
+    // select the div #bars element
+    const bars = document.querySelector("#bars");
+
+    // create multiple element div using loop and adding class 'bar col'
+    for (let i = 0; i < noOfBars; i++) {
+        const bar = document.createElement("div");
+        bar.style.height = `${array[i] * 2}px`;
+        bar.style.width = `30px`;
+        bar.classList.add("bar");
+        bar.classList.add("flex-item");
+        bar.classList.add(`barNo${i}`);
+        bars.appendChild(bar);
+    }
+
+
+}
+
+
+
+// if( > 20){
+//     enableInputArrayBtn();
+// }else{
+//     disableInputArrayBtn();
+// }
+
+
+
+
 
 // Call to display bars right when you visit the site
 createNewArray();
@@ -101,7 +154,7 @@ function createNewArray(noOfBars = 60) {
     array = [];
     for (let i = 0; i < noOfBars; i++) {
         array.push(Math.floor(Math.random() * 200) + 1);
-        // array.push(userArr[i]);
+        // array.push(userarr[i]);
     }
     console.log(array);
 
@@ -141,5 +194,5 @@ userArray.addEventListener("click", function () {
     console.log("From newArray with speed" + delay);
     enableSortingBtn();
     enableSizeSlider();
-    createNewArray(arraySize.value);
+    createInputArray(arraySize.value);
 });
