@@ -7,9 +7,38 @@ function swap(el1, el2) {
     el2.style.height = temp;
     
 }
+var inputArray = [];
+var elements;
+
+async function InputArray() {
+  console.log("InputArray()");
+  elements = prompt("Enter number of elements:");
+  for (var i = 0; i < elements; i++) {
+    inputArray[i] = prompt(`Enter value ${i + 1}:`);
+  }
+  for (var i = 0; i < elements; i++) {
+    console.log(inputArray[i]);
+  }
+  console.log(inputArray);
+}
+
+const InpArrbtn = document.querySelector(".InputArray");
+InpArrbtn.addEventListener("click", async function () {
+  disableSortingBtn();
+  disableSizeSlider();
+  disableNewArrayBtn();
+  await InputArray();
+  enableSortingBtn();
+  enableSizeSlider();
+  enableNewArrayBtn();
+});
+
+
+
 
 //importing userArray from userArray.js file
-// const userArray = require('./inputArray')
+// import userArr from './inputArray';
+
 
 // Disables sorting buttons used in conjunction with enable, so that we can disable during sorting and enable buttons after it
 function disableSortingBtn(){
@@ -98,17 +127,26 @@ delayElement.addEventListener('input', function(){
 
 let array = [];
 
-const userarr = [20, 15, 60, 200, 150, 100, 50, 90, 180, 160, 120, 140,88,56,23,10,46,90];
+
+
+const userarr = [20, 15, 24,60,60, 200, 150, 100, 50, 90, 180, 160, 120, 140,88,56,23,10,46,90];
+
+
 createInputArray();
 
-function createInputArray(noOfBars = userarr.value){
+function createInputArray(noOfBars = elements){
 
     deleteChild();
 
     array=[];
+    for (var i = 0; i < noOfBars; i++) {
+        userarr[i] = inputArray[i];
+        console.log(userarr);
+    }
+
     console.log(userarr);
 
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < noOfBars; i++) {
     //   array.push(Math.floor(Math.random() * 200) + 1);
         array.push(userarr[i]);
     }
@@ -133,7 +171,7 @@ function createInputArray(noOfBars = userarr.value){
 
 
 
-// if( > 20){
+// if( arraySize < 20){
 //     enableInputArrayBtn();
 // }else{
 //     disableInputArrayBtn();
@@ -190,9 +228,12 @@ newArray.addEventListener("click", function(){
 
 const userArray = document.querySelector(".InputArray");
 userArray.addEventListener("click", function () {
-    console.log("From newArray " + userarr.value);
+    console.log("From newArray " + userarr.length);
     console.log("From newArray with speed" + delay);
     enableSortingBtn();
     enableSizeSlider();
     createInputArray(arraySize.value);
 });
+
+
+
