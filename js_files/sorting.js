@@ -36,10 +36,6 @@ InpArrbtn.addEventListener("click", async function () {
 
 
 
-//importing userArray from userArray.js file
-// import userArr from './inputArray';
-
-
 // Disables sorting buttons used in conjunction with enable, so that we can disable during sorting and enable buttons after it
 function disableSortingBtn(){
     document.querySelector(".bubbleSort").disabled = true;
